@@ -1,5 +1,4 @@
 import Contact from "../Contact/Contact";
-import { nanoid } from "nanoid";
 import { useSelector } from "react-redux";
 import { selectFilteredContacts } from "../../redux/contactsSlice";
 
@@ -8,11 +7,11 @@ const ContactList = () => {
 
   return (
     <ul>
-      {contacts.map((contact) => (
-        <li key={nanoid()}>
-          <Contact name={contact.name} number={contact.number} />
-        </li>
-      ))}
+      <li>
+        {contacts.map(({ id, name, number }) => (
+          <Contact key={id} id={id} name={name} number={number} />
+        ))}
+      </li>
     </ul>
   );
 };

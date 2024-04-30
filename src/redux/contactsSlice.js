@@ -1,5 +1,3 @@
-// contactsSlice.js
-
 import { createSlice, createSelector } from "@reduxjs/toolkit";
 import { fetchContacts, addContact, deleteContact } from "./contactsOps";
 
@@ -16,6 +14,7 @@ const contactsSlice = createSlice({
     builder
       .addCase(fetchContacts.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(fetchContacts.fulfilled, (state, action) => {
         state.loading = false;
@@ -24,11 +23,12 @@ const contactsSlice = createSlice({
       })
       .addCase(fetchContacts.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = action.error.message;
       })
 
       .addCase(addContact.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(addContact.fulfilled, (state, action) => {
         state.loading = false;
@@ -37,11 +37,12 @@ const contactsSlice = createSlice({
       })
       .addCase(addContact.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = action.error.message;
       })
 
       .addCase(deleteContact.pending, (state) => {
         state.loading = true;
+        state.error = null;
       })
       .addCase(deleteContact.fulfilled, (state, action) => {
         state.loading = false;
@@ -52,7 +53,7 @@ const contactsSlice = createSlice({
       })
       .addCase(deleteContact.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.payload;
+        state.error = action.error.message;
       });
   },
 });

@@ -1,9 +1,11 @@
+// В файлі App.js
+
 import ContactList from "../ContactList/ContactList";
 import SearchBox from "../SearchBox/SearchBox";
 import ContactForm from "../ContactForm/ContactForm";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { fetchContacts } from "./redux/contactsOps";
+import { fetchContacts } from "../../redux/contactsOps";
 import css from "./App.module.css";
 
 function App() {

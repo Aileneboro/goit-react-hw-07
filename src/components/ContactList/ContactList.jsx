@@ -7,11 +7,15 @@ const ContactList = () => {
 
   return (
     <ul>
-      <li>
-        {contacts.map(({ id, name, number }) => (
-          <Contact key={id} id={id} name={name} number={number} />
-        ))}
-      </li>
+      {contacts.map((contact) => (
+        <li key={contact.id}>
+          <Contact
+            name={contact.name}
+            number={contact.number}
+            id={contact.id}
+          />
+        </li>
+      ))}
     </ul>
   );
 };
